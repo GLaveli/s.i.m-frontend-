@@ -15,7 +15,7 @@ export default function Register() {
           <h1>Credenciais de acesso?</h1>
           <p>Use as credenciais para acessar informaçoes de serviços prestados pela
             <strong> S.I.M Soluçôes</strong></p>
-          <p>Para mais informaçoes <strong><Link className="orangeAlert" to="/" >clique aqui!</Link></strong> e leia os termos.</p>
+          <p>Para mais informaçoes <strong><Link className="orangeAlert" to="/termos" >clique aqui!</Link></strong> e leia os termos.</p>
           <br />
           <p className="redAlert"><strong> Nós não enviamos e-mails pedindo quaisquer informaçoes e e-mail marketing!</strong></p>
 

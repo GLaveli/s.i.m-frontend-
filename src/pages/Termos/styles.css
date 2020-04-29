@@ -1,0 +1,49 @@
+.eula-container {
+  width: 100%;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+.eula-container .content {
+  width: 100%;
+  padding: 96px;
+  background: #f0f0f5;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.eula-container .content section h1 {
+  margin: 0px 0 32px;
+  font-size: 32px;
+}
+
+.eula-container .content section p {
+  font-size: 18px;
+  color: #737380;
+  line-height: 32px;
+}
+
+.eula-container .content form {
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+}
+
+.eula-container .logo-eula {
+  width: 120px;
+  height: 55px;
+  position: relative;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+.eula-container .content .article-title-top {
+  margin-top: 60px;
+}
+
+.eula-container .content .article-title {
+  margin-top: 60px;
+}

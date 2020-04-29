@@ -1,8 +1,9 @@
 import React from 'react';
 import { FiLogIn } from 'react-icons/fi';
+import { Link } from 'react-router-dom'
 
 import logoText from '../../assets/logoText.png';
-import principal from '../../assets/principal.png';
+import principal from '../../assets/SIM-gif-big.gif';
 
 import './styles.css';
 
@@ -17,7 +18,10 @@ export default function Logon() {
           <input placeholder="Credenciais" />
           <button className="button" type="submit">Logar</button>
 
-          <a href="/register" > <FiLogIn size={16} color="#43415D" /> Não tenho credenciais </a>
+          <Link className="linkGoAndBack" to="/register" >
+            <FiLogIn size={16} color="#43415D" />
+           Não tenho credenciais
+           </Link>
         </form>
       </section>
       <img src={principal} alt="logo + texto" />

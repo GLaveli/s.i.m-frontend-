@@ -17,7 +17,7 @@ export default function Register() {
             <strong> S.I.M Soluçôes</strong></p>
           <p>Para mais informaçoes <strong><Link className="orangeAlert" to="/termos" >clique aqui!</Link></strong> e leia os termos.</p>
           <br />
-          <p className="redAlert"><strong> Nós não enviamos e-mails pedindo quaisquer informaçoes e e-mail marketing!</strong></p>
+          <p className="redAlert"><strong> Nós não enviamos e-mails pedindo quaisquer informaçôes!</strong></p>
 
           <Link className="linkGoAndBack" to="/" >
             <FiArrowLeft size={16} color="#43415D" />

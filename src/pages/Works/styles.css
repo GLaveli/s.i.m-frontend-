@@ -1,0 +1,101 @@
+.work-container {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+.work-container header {
+  display: flex;
+  align-items: center;
+}
+
+.work-container header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.work-container header img {
+  height: 70px;
+}
+
+.work-container header a {
+  width: 360px;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.work-container header button {
+  height: 45px;
+  width: 60px;
+  border-radius: 4px;
+  border: 1px solid #dcdce6;
+  background: transparent;
+  margin-left: 16px;
+  transition: border-color 0.2s;
+}
+
+.work-container header button .FiPower {
+  color: #000000;
+}
+
+.work-container header button:hover {
+  border-color: #999;
+  transition: border-color 0.2s;
+}
+
+.work-container header button:hover>.FiPower {
+  color: #e02041;
+}
+
+.work-container h1 {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+
+.work-container ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 24px;
+  column-gap: 24px;
+  list-style: none;
+}
+
+.work-container ul li {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.work-container ul li button {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  border: 0;
+  background: transparent;
+}
+
+.work-container ul li button:hover {
+  opacity: 0.8;
+}
+
+.work-container ul li button:hover>.FiTrash2 {
+  color: #e02041;
+}
+
+.work-container ul li strong {
+  display: block;
+  margin-bottom: 16px;
+  color: #41414d;
+}
+
+.work-container ul li p+string {
+  margin-top: 32px;
+}
+
+.work-container ul li p {
+  color: #737380;
+  line-height: 21px;
+  font-size: 16px;
+}

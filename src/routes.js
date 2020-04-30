@@ -3,7 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Logon from './pages/Logon';
 import Register from './pages/Register';
-import Termos from './pages/Termos';
+import Eula from './pages/Eula';
+import Works from './pages/Works';
 
 export default function Routes() {
   return (
@@ -11,7 +12,8 @@ export default function Routes() {
       <Switch>
         <Route path='/' exact component={Logon} />
         <Route path='/register' component={Register} />
-        <Route path='/termos' component={Termos} />
+        <Route path='/termos' component={Eula} />
+        <Route path='/works' component={Works} />
       </Switch>
     </BrowserRouter>
   )

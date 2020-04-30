@@ -6,7 +6,7 @@ import './styles.css';
 
 import logoText from '../../assets/logoText.png';
 
-export default function Register() {
+export default function Eula() {
   return (
     <div className="eula-container">
       <div className="content">

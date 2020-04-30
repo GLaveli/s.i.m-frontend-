@@ -17,7 +17,7 @@ export default function Works() {
       <header>
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
         <span>Bem vindo, Invacdor</span>
-        <Link className="button" to="/budget/new">Novo orçamento</Link>
+        <Link className="button" to="/">Novo orçamento</Link>
         <button type="button">
           <FiPower className="FiPower" size={18} />
         </button>

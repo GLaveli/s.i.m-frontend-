@@ -22,6 +22,10 @@ export default function Logon() {
             <FiLogIn size={16} color="#43415D" />
            Não tenho credenciais
            </Link>
+
+          <Link className="linkGoAndBack" to="/works" >
+            orçamentos (futuramente acessado com credencial)
+           </Link>
         </form>
       </section>
       <img src={principal} alt="logo + texto" />

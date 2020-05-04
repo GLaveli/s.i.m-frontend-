@@ -47,6 +47,7 @@ form input {
 
 .button:hover {
   color: #F9A229;
+  background: rgb(77, 75, 105);
 }
 
 .linkGoAndBack {
@@ -67,4 +68,5 @@ form input {
 
 .linkGoAndBack:hover {
   opacity: 0.8;
+  color: #F9A229;
 }

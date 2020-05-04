@@ -7,7 +7,6 @@ import Eula from './pages/Eula';
 import Works from './pages/Works';
 import Newbudget from './pages/Newbudget';
 
-
 export default function Routes() {
   return (
     <BrowserRouter>
@@ -16,7 +15,7 @@ export default function Routes() {
         <Route path='/register' component={Register} />
         <Route path='/termos' component={Eula} />
         <Route path='/works' component={Works} />
-        <Route path='/newbudget' component={Works} />
+        <Route path='/newbudget' component={Newbudget} />
       </Switch>
     </BrowserRouter>
   )

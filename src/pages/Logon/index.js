@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FiLogIn } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import HandleCustomToast from '../../components/MyToast'
+import { warnToast } from '../../components/MyToast'
 
 import logoText from '../../assets/logoText.png';
 import principal from '../../assets/SIM-gif-big.gif';
@@ -18,21 +18,15 @@ export default function Logon() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     if (!email) {
-      HandleCustomToast("Campo E-mail vazio!");
+      warnToast("É precido um E-mail para Logar");
     }
     if (!password) {
-      HandleCustomToast("Campo senha vazio!");
+      warnToast("É precido uma Senha para Logar");
     }
-    if (email && password) {
-      HandleCustomToast("Validando dados");
-    }
-
 
   }
-
-
-
   return (
     <div className="logon-container">
       <ToastContainer />
@@ -53,7 +47,7 @@ export default function Logon() {
             value={password}
             onChange={event => setPassword(event.target.value)}
           />
-          <button className="button" type="submit" onClick={handleSubmit}>Logar</button>
+          <button className="button" type="submit" onClick={handleSubmit}>Acessar</button>
 
           {/* ----------------------------------------------------------- */}
 

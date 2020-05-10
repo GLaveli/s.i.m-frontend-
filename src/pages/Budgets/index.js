@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { ToastContainer } from 'react-toastify';
+
 import api from '../../services/api';
 
 import { customToast } from '../../components/MyToast'
@@ -26,11 +28,13 @@ export default function Budgets() {
   }, []);
 
   function handleExit() {
-    customToast('Você saiu! seus dados de navagação foram apagados ;)');
     localStorage.setItem('userId', '');
     localStorage.setItem('userName', '');
     localStorage.setItem('userEmail', '');
     history.push('/');
+    setTimeout(() => {
+      customToast("Seus dados de navegação foram apagados ;)");
+    }, 1000);
   }
 
   var today = new Date(),
@@ -39,6 +43,7 @@ export default function Budgets() {
 
   return (
     <div className="work-container">
+      <ToastContainer />
       <header>
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
         <span>Bem vindo, {fisrtName[0]}</span>

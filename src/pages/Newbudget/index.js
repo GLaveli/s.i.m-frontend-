@@ -24,29 +24,27 @@ export default function Newbudget() {
 
     let data = { title, description, price }
 
-    if (description.length >= 3) {
-      const response = await api.post('newbudget', data, {
-        headers: {
-          user_id: userId,
-        }
-      });
-
-
-
-      if (response.data.message === "ok") {
-        customToast('Enviando orçamento');
-        setTimeout(() => {
-          history.push('/budgets');
-        }, 2000);
-      } else if (response.data.message === "Token invalido") {
-        errorToast("Você não tem permissão para isso!");
-        setTimeout(() => {
-          history.push('/');
-        }, 5000);
+    const response = await api.post('newbudget', data, {
+      headers: {
+        user_id: userId,
       }
+
+    })
+
+    if (response.data.code === 0) {
+      errorToast(response.data.message);
+      setTimeout(() => {
+        history.push('/');
+        errorToast("Você precisa estar logado");
+      }, 3000);
     } else {
-      warnToast('A descrição precisa ter no minimo 3 caracteres');
+      customToast("Validando dados!");
+      setTimeout(() => {
+        history.push('/budgets');
+        customToast("Orçamento enviado!");
+      }, 3000);
     }
+
   }
 
 

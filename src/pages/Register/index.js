@@ -72,7 +72,7 @@ export default function Register() {
 
           <Link className="linkGoAndBack" to="/" >
             <FiArrowLeft size={16} color="#43415D" />
-              Não quero me cadastrar!
+              Já tenho uma conta
            </Link>
 
         </section>

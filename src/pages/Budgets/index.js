@@ -1,29 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
+import api from '../../services/api';
+
+import { customToast } from '../../components/MyToast'
 
 import logoText from '../../assets/logoText.png';
 
 import './styles.css';
 
-export default function Works() {
+export default function Budgets() {
+  const userName = localStorage.getItem('userName');
+  const userId = localStorage.getItem('userId');
+  let fisrtName = userName.split(' ')
+  const history = useHistory();
+
+  useEffect(() => {
+    api.get('', {
+      headers: {
+        user_id: userId,
+      }
+    }).then(response => {
+
+    });
+  }, []);
+
+  function handleExit() {
+    customToast('Você saiu! seus dados de navagação foram apagados ;)');
+    localStorage.setItem('userId', '');
+    localStorage.setItem('userName', '');
+    localStorage.setItem('userEmail', '');
+    history.push('/');
+  }
 
   var today = new Date(),
-    date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
 
 
   return (
     <div className="work-container">
       <header>
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
-        <span>Bem vindo, Invacdor</span>
-        <Link className="button" to="/">Novo orçamento</Link>
-        <button type="button">
+        <span>Bem vindo, {fisrtName[0]}</span>
+        <Link className="button" to="/newbudget">Novo orçamento</Link>
+
+        <button type="button" onClick={handleExit}>
           <FiPower className="FiPower" size={18} />
         </button>
       </header>
 
-      <h1> Orçamentos </h1>
+      <h1>Meus orçamentos:</h1>
+
+      {
+
+
+
+      }
 
       <ul>
         <li>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FiLogIn } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import api from '../../services/api'
 
-import { warnToast } from '../../components/MyToast'
+import { warnToast, errorToast } from '../../components/MyToast';
 
 import logoText from '../../assets/logoText.png';
 import principal from '../../assets/SIM-gif-big.gif';
@@ -12,11 +13,12 @@ import principal from '../../assets/SIM-gif-big.gif';
 import './styles.css';
 
 export default function Logon() {
+  const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (!email) {
@@ -25,6 +27,28 @@ export default function Logon() {
     if (!password) {
       warnToast("É precido uma Senha para Logar");
     }
+
+    if (email && password) {
+      try {
+        const response = await api.post('logon', { email, password });
+
+
+        if (response.data.message) {
+          warnToast(response.data.message);
+        }
+
+        if (response.data.email === email) {
+          localStorage.setItem('userId', response.data._id);
+          localStorage.setItem('userName', response.data.name);
+          localStorage.setItem('userEmail', response.data.email);
+          history.push('/budgets');
+        }
+      } catch (err) {
+
+        errorToast("Algo deu errado, tente mais tarde");
+      }
+    }
+
 
   }
   return (
@@ -36,7 +60,7 @@ export default function Logon() {
           <h1>Faça seu Login</h1>
 
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             value={email}
             onChange={event => setEmail(event.target.value)}
@@ -58,6 +82,9 @@ export default function Logon() {
 
           <Link className="linkGoAndBack" to="/newbudget" >
             orçamentos (futuramente acessado com credencial)
+           </Link>
+          <Link className="linkGoAndBack" to="/budgets" >
+            works (futuramente acessado com credencial)
            </Link>
         </form>
       </section>

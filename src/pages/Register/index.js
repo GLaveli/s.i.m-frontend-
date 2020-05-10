@@ -33,15 +33,10 @@ export default function Register() {
       name, cpf, email, password, tell1, tell2, street, number, city, uf
     };
 
-
-
-
     if (name && cpf && email && password && street && number && city && uf) {
       if (password === rePassword) {
         try {
           const response = await api.post('sessions', data);
-          console.log("Respnse " + response.data.email);
-          console.log("digitado " + email);
 
           if (response.data.email === email && response.data.code === 0) {
             warnToast('Email ja cadastrado');

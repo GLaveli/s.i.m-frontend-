@@ -24,7 +24,7 @@
 }
 
 .budget-container .content section h1 {
-  margin: 0px 0 32px;
+  margin-top: -50px;
   font-size: 32px;
 }
 
@@ -34,31 +34,25 @@
   line-height: 32px;
 }
 
+.budget-container .content .logo-register-newbudget {
+  position: relative;
+  height: 40px;
+  right: 60px;
+  bottom: 60px;
+}
+
 .budget-container .content form {
   width: 100%;
   max-width: 400px;
   min-height: 400px;
 }
 
-.budget-container .content .logo-register {
-  position: relative;
-  right: 60px;
-  bottom: 60px;
-}
-
 .budget-container .content form input {
   margin: 3px;
 }
 
-.budget-container .content form .input-group .zero-margin {
-  padding: 15px;
-}
-
-.budget-container .content form .input-group {
-  display: flex;
-}
-
-.budget-container .content form .input-group input+input {
-  margin-left: 8px;
+.budget-container .content form textarea {
+  margin-left: 3px;
+  margin-top: 3px;
 }
 

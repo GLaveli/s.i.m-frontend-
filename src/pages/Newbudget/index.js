@@ -27,9 +27,8 @@ export default function Newbudget() {
     const response = await api.post('newbudget', data, {
       headers: {
         user_id: userId,
-      }
-
-    })
+      },
+    });
 
     if (response.data.code === 0) {
       errorToast(response.data.message);

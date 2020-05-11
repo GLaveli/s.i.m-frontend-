@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import { ToastContainer } from 'react-toastify';
@@ -8,22 +8,24 @@ import api from '../../services/api';
 import { customToast } from '../../components/MyToast'
 
 import logoText from '../../assets/logoText.png';
+import hommer from '../../assets/hommer.png';
 
 import './styles.css';
 
 export default function Budgets() {
+  const [budgets, setBudgets] = useState([]);
   const userName = localStorage.getItem('userName');
   const userId = localStorage.getItem('userId');
   let fisrtName = userName.split(' ')
   const history = useHistory();
 
   useEffect(() => {
-    api.get('', {
+    api.get('/showbudgets', {
       headers: {
         user_id: userId,
       }
     }).then(response => {
-
+      setBudgets(response.data);
     });
   }, []);
 
@@ -36,10 +38,11 @@ export default function Budgets() {
       customToast("Seus dados de navegação foram apagados ;)");
     }, 1000);
   }
+  console.log(budgets.length);
 
-  var today = new Date(),
-    date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
 
+  //var today = new Date(),
+  //date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
 
   return (
     <div className="work-container">
@@ -54,85 +57,34 @@ export default function Budgets() {
         </button>
       </header>
 
-      <h1>Meus orçamentos:</h1>
-
-      {
-
-
-
-      }
+      <h1 className="centerItem">Meus orçamentos: {budgets.length} ao total</h1>
+      <hr className="margin-botton" />
 
       <ul>
-        <li>
-          <strong>Orçamento em: {date}</strong>
-          <p>Por: Weliton de Rezende</p>
+        {
+          budgets.length === 0 ?
+            <div className="emptyBudgetContainer">
+              <h2 className="aliginText">Você ainda não criou um orçamento!</h2>
+              <img className="animatedLogo" src={hommer} alt="Logo animada" />
+            </div>
+            :
+            budgets.map(budget => (
+              <li key={budget._id}>
+                <strong>Orçamento em: {budget.createdAt}</strong>
+                <p>Por: {budget.user.name}</p>
 
-          <strong>Instalação de ar-condicionado</strong>
-          <p>Preciso de uma instalação predial de um ar consdicionado!</p>
+                <strong>{budget.title}</strong>
+                <p>{budget.description}</p>
 
-          <strong>Valor:</strong>
-          <p>R$: 620,00</p>
+                <strong>Valor:</strong>
+                <p>R$: {budget.price}</p>
 
-          <button>
-            <FiTrash2 className="FiTrash2" size={20} />
-          </button>
-        </li>
-        <li>
-          <strong>Orçamento em: {date}</strong>
-          <p>Por: Weliton de Rezende</p>
-
-          <strong>Instalação de ar-condicionado</strong>
-          <p>Preciso de uma instalação predial de um ar consdicionado!</p>
-
-          <strong>Valor:</strong>
-          <p>R$: 620,00</p>
-
-          <button>
-            <FiTrash2 className="FiTrash2" size={20} />
-          </button>
-        </li>
-        <li>
-          <strong>Orçamento em: {date}</strong>
-          <p>Por: Weliton de Rezende</p>
-
-          <strong>Instalação de ar-condicionado</strong>
-          <p>Preciso de uma instalação predial de um ar consdicionado!</p>
-
-          <strong>Valor:</strong>
-          <p>R$: 620,00</p>
-
-          <button>
-            <FiTrash2 className="FiTrash2" size={20} />
-          </button>
-        </li>
-        <li>
-          <strong>Orçamento em: {date}</strong>
-          <p>Por: Weliton de Rezende</p>
-
-          <strong>Instalação de ar-condicionado</strong>
-          <p>Preciso de uma instalação predial de um ar consdicionado!</p>
-
-          <strong>Valor:</strong>
-          <p>R$: 620,00</p>
-
-          <button>
-            <FiTrash2 className="FiTrash2" size={20} />
-          </button>
-        </li>
-        <li>
-          <strong>Orçamento em: {date}</strong>
-          <p>Por: Weliton de Rezende</p>
-
-          <strong>Instalação de ar-condicionado</strong>
-          <p>Preciso de uma instalação predial de um ar consdicionado!</p>
-
-          <strong>Valor:</strong>
-          <p>R$: 620,00</p>
-
-          <button>
-            <FiTrash2 className="FiTrash2" size={20} />
-          </button>
-        </li>
+                <button>
+                  <FiTrash2 className="FiTrash2" size={20} />
+                </button>
+              </li>
+            ))
+        }
       </ul>
     </div>
   );

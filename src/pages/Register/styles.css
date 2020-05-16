@@ -21,6 +21,7 @@
 .register-container .content section {
   width: 100%;
   max-width: 500px;
+  transition: .5s;
 }
 
 .register-container .content section h1 {
@@ -38,6 +39,7 @@
   width: 100%;
   max-width: 400px;
   min-height: 400px;
+  transition: .5s;
 }
 
 .register-container .content .logo-register {
@@ -76,4 +78,38 @@
   font-size: 16px;
   margin-left: 8px;
   font-weight: bold;
+}
+
+/*------------------------------------------------------------*/
+
+@media (max-width: 960px) {
+  .register-container {
+    width: 100%;
+    max-width: 800px;
+    height: 120vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .register-container .content {
+    display: inline;
+    justify-content: center;
+    margin: 25px 0px;
+  }
+  .register-container .content section {
+    margin: 0 auto;
+    margin-top: 20vh;
+    text-align: center;
+    transition: 1s;
+  }
+  .register-container .content form {
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .register-container .content .logo-register {
+    position: relative;
+    right: 0px;
+    bottom: 60px;
+  }
 }

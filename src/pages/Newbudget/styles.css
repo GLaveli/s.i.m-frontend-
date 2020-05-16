@@ -1,4 +1,4 @@
-.budget-container {
+.new-budget-container {
   width: 100%;
   max-width: 1120px;
   height: 100vh;
@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.budget-container .content {
+.new-budget-container .content {
   width: 100%;
   padding: 96px;
   background: #f0f0f5;
@@ -18,41 +18,112 @@
   justify-content: space-between;
 }
 
-.budget-container .content section {
+.new-budget-container .content section {
   width: 100%;
   max-width: 500px;
+  transition: .5s;
 }
 
-.budget-container .content section h1 {
-  margin-top: -50px;
-  font-size: 32px;
+.new-budget-container .content section .iten-panel {
+  height: 400px;
+  width: 500px;
+  background-color: #fefefe;
 }
 
-.budget-container .content section p {
-  font-size: 18px;
-  color: #737380;
-  line-height: 32px;
-}
-
-.budget-container .content .logo-register-newbudget {
+.new-budget-container .content .logo-register-newbudget {
   position: relative;
   height: 40px;
-  right: 60px;
-  bottom: 60px;
+  margin-left: 25%;
+  transform: translate(50%, 50%);
+  bottom: 0px;
 }
 
-.budget-container .content form {
+.new-budget-container .content form {
   width: 100%;
   max-width: 400px;
   min-height: 400px;
+  transition: .5s;
 }
 
-.budget-container .content form input {
+.new-budget-container .content form input {
   margin: 3px;
 }
 
-.budget-container .content form textarea {
+.new-budget-container .content form textarea {
   margin-left: 3px;
   margin-top: 3px;
 }
 
+.new-budget-container .content form .link-position {
+  margin-top: 8px;
+  margin-bottom: -25px;
+}
+
+.new-budget-container .content section .iten-panel {
+  overflow: auto;
+}
+
+.new-budget-container .content section .iten-panel .list-iten {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(177, 174, 174);
+}
+
+.new-budget-container .content section .iten-panel .list-iten .list-text {
+  margin-left: 15px;
+  min-width: 360px;
+}
+
+/* --------------------------- increment --------------------------- */
+
+section .iten-panel .list-iten .counter-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+section .iten-panel .list-iten .counter-block input, button {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+section .iten-panel .list-iten .counter-block input {
+  width: 45px;
+  text-align: center;
+}
+
+section .iten-panel .list-iten .counter-block button {
+  width: 25px
+}
+
+/*--------------------------------------------*/
+
+@media (max-width: 1100px) {
+  .new-budget-container {
+    width: 100%;
+    max-width: 850px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .new-budget-container .content {
+    display: inline;
+    justify-content: center;
+    margin: 0px 10px;
+    padding: 0;
+  }
+  .new-budget-container .content section {
+    margin: 15px auto;
+    text-align: center;
+    transition: .5s;
+  }
+  .new-budget-container .content form {
+    margin: 0 auto 55px;
+  }
+}

@@ -71,6 +71,10 @@ textarea:focus {
   background: rgb(77, 75, 105);
 }
 
+ul {
+  list-style-type: none;
+}
+
 .linkGoAndBack {
   display: flex;
   width: fit-content;
@@ -110,3 +114,15 @@ textarea:focus {
   background-color: #4d4b69;
 }
 
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

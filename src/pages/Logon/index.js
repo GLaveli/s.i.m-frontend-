@@ -7,7 +7,7 @@ import api from '../../services/api'
 import { warnToast, errorToast } from '../../components/MyToast';
 
 import logoText from '../../assets/logoText.png';
-import principal from '../../assets/SIM-gif-big.gif';
+//import principal from '../../assets/SIM-gif-big.gif';
 
 
 import './styles.css';
@@ -88,7 +88,9 @@ export default function Logon() {
            </Link>
         </form>
       </section>
-      <img src={principal} alt="logo + texto" />
+      <div>
+        {/* Em breve Conteudo google play */}
+      </div>
     </div>
   );
 }

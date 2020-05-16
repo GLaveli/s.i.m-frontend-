@@ -5,11 +5,11 @@ import { ToastContainer } from 'react-toastify';
 
 import api from '../../services/api';
 
-import { customToast, warnToast, errorToast } from '../../components/MyToast';
+import { customToast, errorToast } from '../../components/MyToast';
 
 import './styles.css'
 
-import logoText from '../../assets/logoText.png';
+//import logoText from '../../assets/logoText.png';
 
 export default function Newbudget() {
   const userId = localStorage.getItem('userId');
@@ -43,26 +43,174 @@ export default function Newbudget() {
         customToast("Orçamento enviado!");
       }, 3000);
     }
-
   }
-
-
 
   return (
 
-    <div className="budget-container">
+    <div className="new-budget-container">
       <ToastContainer />
       <div className="content">
         <section>
-          <img className="logo-register-newbudget" src={logoText} alt="logo" />
-          <h1>Novo orçamento</h1>
-          <p>Descreva a sua necessidade e clique em enviar,
-             assim que possivel entraremos em contato</p>
+          <div className="iten-panel">
+            <ul>
+              <h2>Tag01</h2>
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
 
-          <Link className="linkGoAndBack" to="/budgets" >
-            <FiArrowLeft size={16} color="#43415D" />
-              Voltar para home
-           </Link>
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+              <h2>Tag02</h2>
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+              <h2>Tag03</h2>
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div className="list-iten">
+                  <div className="list-text">
+                    <p>Item 01 esta a venda!</p>
+                  </div>
+                  <div className="counter-block">
+                    <button id="btn-counter" > - </button>
+                    <input className="display-counter" type="number" value="0" />
+                    <button id="btn-counter" > + </button>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
         </section>
 
         <form onSubmit={handleSubmit}>
@@ -83,6 +231,10 @@ export default function Newbudget() {
           />
 
           <button className="button" type="submit">Cadastrar</button>
+          <Link className="linkGoAndBack link-position" to="/budgets" >
+            <FiArrowLeft size={16} color="#43415D" />
+              Cancelar
+           </Link>
         </form>
       </div>
     </div>

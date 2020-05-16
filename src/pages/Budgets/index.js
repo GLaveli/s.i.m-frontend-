@@ -27,7 +27,7 @@ export default function Budgets() {
     }).then(response => {
       setBudgets(response.data);
     });
-  }, []);
+  }, [userId]);
 
   function handleExit() {
     localStorage.setItem('userId', '');

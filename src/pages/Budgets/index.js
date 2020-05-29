@@ -38,8 +38,6 @@ export default function Budgets() {
       customToast("Seus dados de navegação foram apagados ;)");
     }, 1000);
   }
-  console.log(budgets.length);
-
 
   //var today = new Date(),
   //date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();

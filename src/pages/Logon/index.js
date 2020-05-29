@@ -7,8 +7,6 @@ import api from '../../services/api'
 import { warnToast, errorToast } from '../../components/MyToast';
 
 import logoText from '../../assets/logoText.png';
-//import principal from '../../assets/SIM-gif-big.gif';
-
 
 import './styles.css';
 
@@ -49,7 +47,6 @@ export default function Logon() {
       }
     }
 
-
   }
   return (
     <div className="logon-container">
@@ -78,13 +75,6 @@ export default function Logon() {
           <Link className="linkGoAndBack" to="/register" >
             <FiLogIn size={16} color="#43415D" />
            Não tenho credenciais
-           </Link>
-
-          <Link className="linkGoAndBack" to="/newbudget" >
-            orçamentos (futuramente acessado com credencial)
-           </Link>
-          <Link className="linkGoAndBack" to="/budgets" >
-            works (futuramente acessado com credencial)
            </Link>
         </form>
       </section>

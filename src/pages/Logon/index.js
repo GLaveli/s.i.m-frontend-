@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import api from '../../services/api'
 
-import { warnToast, errorToast } from '../../components/MyToast';
+import { warnToast, errorToast } from '../../components/warnings/MyToast';
 
 import logoText from '../../assets/logoText.png';
 

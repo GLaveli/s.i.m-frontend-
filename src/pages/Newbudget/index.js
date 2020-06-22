@@ -5,19 +5,27 @@ import { ToastContainer } from 'react-toastify';
 
 import api from '../../services/api';
 
-import { customToast, errorToast } from '../../components/MyToast';
-
+import { customToast, errorToast } from '../../components/warnings/MyToast';
+import ItemCount from '../../components/count';
 import './styles.css'
 
 export default function Newbudget() {
   const userId = localStorage.getItem('userId');
 
   const [servicesList, setServicesList] = useState([]);
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const history = useHistory();
+
+  useEffect(() => {
+    async function getServices() {
+      const response = await api.get('services');
+
+      setServicesList(response.data);
+
+    } getServices();
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -45,16 +53,6 @@ export default function Newbudget() {
     }
   }
 
-  useEffect(() => {
-    async function getServices() {
-      const response = await api.get('services');
-
-      setServicesList(response.data);
-
-    } getServices();
-  }, []);
-
-
   return (
 
     <div className="new-budget-container">
@@ -63,20 +61,10 @@ export default function Newbudget() {
         <section>
           <div className="iten-panel">
             <ul>
-              <h2>Tag01</h2>
               {
                 servicesList.map((service) => (
                   <li key={service._id}>
-                    <div className="list-iten">
-                      <div className="list-text">
-                        <p>Item 01 esta a venda!</p>
-                      </div>
-                      <div className="counter-block">
-                        <button id="btn-counter" > - </button>
-                        <input className="display-counter" type="number" />
-                        <button id="btn-counter" > + </button>
-                      </div>
-                    </div>
+                    <ItemCount />
                   </li>
                 ))
               }

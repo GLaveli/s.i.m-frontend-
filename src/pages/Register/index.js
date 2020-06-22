@@ -3,7 +3,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { successToast, errorToast, warnToast } from '../../components/MyToast';
+import { successToast, errorToast, warnToast } from '../../components/warnings/MyToast';
 
 import api from '../../services/api';
 

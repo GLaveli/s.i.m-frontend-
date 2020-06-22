@@ -1,0 +1,49 @@
+/* --------------------------- increment --------------------------- */
+
+section .iten-panel .list-iten .counter-block .numberPane {
+ height: 21px;
+ width: 30px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: auto;
+ background-color: #fff;
+}
+
+section .iten-panel .list-iten .counter-block .numberPane .numbers {
+ font-size: 16px;
+ font-weight: bold;
+}
+
+section .iten-panel .list-iten .counter-block {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: nowrap;
+ justify-content: center;
+ align-items: center;
+}
+
+section .iten-panel .list-iten .counter-block input, button {
+ font-size: 16px;
+ font-weight: 700;
+}
+
+section .iten-panel .list-iten .counter-block button {
+ width: 25px
+}
+
+section .iten-panel .list-iten .counter-block .countButton {
+ width: 21px;
+ height: 21px;
+ border: 0;
+ font-weight: 700;
+ font-size: 18px;
+ color: #fff;
+ background: #43415D;
+ transition: 0.2s;
+}
+
+section .iten-panel .list-iten .counter-block .countButton:hover {
+ color: #F9A229;
+ background: rgb(77, 75, 105);
+}

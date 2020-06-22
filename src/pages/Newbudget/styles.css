@@ -79,27 +79,6 @@
   min-width: 360px;
 }
 
-/* --------------------------- increment --------------------------- */
-
-section .iten-panel .list-iten .counter-block {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-section .iten-panel .list-iten .counter-block input, button {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-section .iten-panel .list-iten .counter-block input {
-  width: 45px;
-  text-align: center;
-}
-
-section .iten-panel .list-iten .counter-block button {
-  width: 25px
-}
 
 /*--------------------------------------------*/
 

@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 
 import api from '../../services/api';
 
-import { customToast } from '../../components/MyToast'
+import { customToast } from '../../components/warnings/MyToast'
 
 import logoText from '../../assets/logoText.png';
 import hommer from '../../assets/hommer.png';
@@ -13,6 +13,7 @@ import hommer from '../../assets/hommer.png';
 import './styles.css';
 
 export default function Budgets() {
+  
   const [budgets, setBudgets] = useState([]);
   const userName = localStorage.getItem('userName');
   const userId = localStorage.getItem('userId');

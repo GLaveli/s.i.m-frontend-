@@ -27,4 +27,45 @@
   margin-top: 8px;
 }
 
+.logon-container .watcherImg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15px;
+}
+
 /*------------------------------------------------------------*/
+
+/*Attempts*/
+
+.waitConnectionContainer {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.waitTitle {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.waitText {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.spanAttempts {
+  color: #F9A229; 
+}
+
+.waitAttemps {
+  text-align: center;
+}
+
+.waitCount {
+  font-size: 20px;
+  color: #4d4b69;
+  text-align: center;
+  margin-top: 15px;
+}

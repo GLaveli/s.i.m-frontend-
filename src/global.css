@@ -68,7 +68,7 @@ textarea:focus {
 
 .button:hover {
   color: #F9A229;
-  background: rgb(77, 75, 105);
+  background: #4d4b69;
 }
 
 ul {
@@ -125,4 +125,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }

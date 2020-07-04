@@ -1,6 +1,69 @@
-/* --------------------------- increment --------------------------- */
+/* --------------------------- Countainer Block --------------------------- */
 
-section .iten-panel .list-iten .counter-block .numberPane {
+.item-container {
+ width: 230px;
+ height: 165px;
+ margin: 5px;
+ background: #F0F0F5;
+ border: 1.5px solid #43415D;
+ border-radius: 5px;
+ box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.item-container .item-title {
+ height: 40px;
+ font-size: 16px;
+ font-weight: 700;
+ text-align: center;
+ color: azure;
+ border-bottom: 1px solid;
+ border-radius: 0px 0px 15px 15px;
+ margin-bottom: 15px;
+ background: #43415D;
+}
+
+.item-container .item-body {
+ padding: 10px;
+}
+
+.item-container .item-options {
+ width: 100%;
+ display: flex;
+ margin-bottom: 10px;
+ justify-content: center;
+}
+
+.item-container .item-options select {
+ width: 100%;
+ height: 25px;
+ text-align-last: right;
+ padding-right: 20px;
+ direction: ltr;
+}
+
+.item-values {
+ display: flex;
+ width: 100%;
+ align-items: center;
+}
+
+.input-values {
+ width: 60px;
+ text-align: center;
+}
+
+/* --------------------------- Counter Block --------------------------- */
+
+.item-container .counter-block {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: nowrap;
+ width: 70px;
+ justify-content: center;
+ align-items: center;
+}
+
+.item-container .numberPane {
  height: 21px;
  width: 30px;
  display: flex;
@@ -10,29 +73,21 @@ section .iten-panel .list-iten .counter-block .numberPane {
  background-color: #fff;
 }
 
-section .iten-panel .list-iten .counter-block .numberPane .numbers {
+.item-container .numbers {
  font-size: 16px;
  font-weight: bold;
 }
 
-section .iten-panel .list-iten .counter-block {
- display: flex;
- flex-direction: row;
- flex-wrap: nowrap;
- justify-content: center;
- align-items: center;
-}
-
-section .iten-panel .list-iten .counter-block input, button {
+.item-container input, button {
  font-size: 16px;
  font-weight: 700;
 }
 
-section .iten-panel .list-iten .counter-block button {
- width: 25px
+.item-container button {
+ width: 25px;
 }
 
-section .iten-panel .list-iten .counter-block .countButton {
+.item-container .countButton {
  width: 21px;
  height: 21px;
  border: 0;
@@ -43,7 +98,9 @@ section .iten-panel .list-iten .counter-block .countButton {
  transition: 0.2s;
 }
 
-section .iten-panel .list-iten .counter-block .countButton:hover {
+.item-container .countButton:hover {
  color: #F9A229;
  background: rgb(77, 75, 105);
 }
+
+/*---------------------------- Lista de itens ----------------------------------*/

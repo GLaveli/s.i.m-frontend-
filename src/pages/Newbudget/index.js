@@ -15,8 +15,13 @@ export default function Newbudget() {
   const [servicesList, setServicesList] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [totalValue, seTotalValue] = useState('Valor aproximado de R$: 0,00');
 
   const history = useHistory();
+  var currentTime = new Date()
+  var day = currentTime.getDate();
+  var month = currentTime.getMonth() + 1;
+  var year = currentTime.getFullYear();
 
   useEffect(() => {
     async function getServices() {
@@ -52,6 +57,7 @@ export default function Newbudget() {
       }, 3000);
     }
   }
+  console.log(servicesList);
 
   return (
 
@@ -59,19 +65,27 @@ export default function Newbudget() {
       <ToastContainer />
       <div className="content">
         <section>
-          <div className="iten-panel">
-            <ul>
-              {
-                servicesList.map((service) => (
-                  <li key={service._id}>
-                    <ItemCount />
-                  </li>
-                ))
-              }
-            </ul>
+          <div className="item-panel">
+            <h4 className="item-panel-title"> TABELA DE PREÇOS MÉDIOS DE SERVIÇOS ELÉTRICOS EM {day + '/' + month + '/' + year} </h4>
+            <div >
+              <ul className="item-panel-body">
+                {
+                  servicesList.map((service) => (
+                    <li key={service._id}>
+                      <ItemCount
+                        title={service.description}
+                        priceAboveThreeWithCable={service.priceAboveThreeWithCable}
+                        priceAboveThreeWithOutCable={service.priceAboveThreeWithOutCable}
+                        priceWithCable={service.priceWithCable}
+                        priceWithOutCable={service.priceWithOutCable}
+                      />
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
           </div>
         </section>
-
         <form onSubmit={handleSubmit}>
           <input
             placeholder="Titulo (Opcional)"
@@ -84,12 +98,11 @@ export default function Newbudget() {
             value={description}
             onChange={event => setDescription(event.target.value)}
           />
-          <input
-            value="RS: 00,00"
-            onChange={event => setDescription(event.target.value)}
+          <input className="centerText"
+            value={totalValue} disabled={true}
           />
 
-          <button className="button" type="submit">Cadastrar</button>
+          <button className="button" type="submit">Enviar</button>
           <Link className="linkGoAndBack link-position" to="/budgets" >
             <FiArrowLeft size={16} color="#43415D" />
               Cancelar

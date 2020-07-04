@@ -26,9 +26,6 @@ function customToast(msg) {
     position: toast.POSITION.TOP_LEFT,
     className: 'sua-classe',
   });
-}
-
-
-
+};
 
 export { defaultToast, errorToast, successToast, infoToast, warnToast, customToast }

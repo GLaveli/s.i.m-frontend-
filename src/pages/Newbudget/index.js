@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import api from '../../services/api';
 
 import { customToast, errorToast } from '../../components/warnings/MyToast';
-import ItemCount from '../../components/count';
+import ItemTable from '../../components/itemTable';
 import './styles.css'
 
 export default function Newbudget() {
@@ -15,13 +15,14 @@ export default function Newbudget() {
   const [servicesList, setServicesList] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [totalValue, seTotalValue] = useState('Valor aproximado de R$: 0,00');
+  const [totalValue, seTotalValue] = useState(0);
 
   const history = useHistory();
   var currentTime = new Date()
   var day = currentTime.getDate();
   var month = currentTime.getMonth() + 1;
   var year = currentTime.getFullYear();
+
 
   useEffect(() => {
     async function getServices() {
@@ -57,7 +58,17 @@ export default function Newbudget() {
       }, 3000);
     }
   }
-  console.log(servicesList);
+
+  function handleCuotation() {
+    let totalCuotationIputs = 0;
+    var cuotationInputs = document.querySelectorAll('input[name="inputValue"]');
+    
+    for (let i = 0; i < cuotationInputs.length; i++) {
+      totalCuotationIputs += parseInt(cuotationInputs[i].value)
+
+    }
+    seTotalValue(totalCuotationIputs);
+  }
 
   return (
 
@@ -67,12 +78,12 @@ export default function Newbudget() {
         <section>
           <div className="item-panel">
             <h4 className="item-panel-title"> TABELA DE PREÇOS MÉDIOS DE SERVIÇOS ELÉTRICOS EM {day + '/' + month + '/' + year} </h4>
-            <div >
+            <div>
               <ul className="item-panel-body">
                 {
                   servicesList.map((service) => (
                     <li key={service._id}>
-                      <ItemCount
+                      <ItemTable
                         title={service.description}
                         priceAboveThreeWithCable={service.priceAboveThreeWithCable}
                         priceAboveThreeWithOutCable={service.priceAboveThreeWithOutCable}
@@ -85,6 +96,7 @@ export default function Newbudget() {
               </ul>
             </div>
           </div>
+          <button className="fitButton" onClick={() => handleCuotation()}>Atualizar Cotação</button>
         </section>
         <form onSubmit={handleSubmit}>
           <input
@@ -99,7 +111,7 @@ export default function Newbudget() {
             onChange={event => setDescription(event.target.value)}
           />
           <input className="centerText"
-            value={totalValue} disabled={true}
+            value={`Valor aproximado de R$: ${totalValue},00`} disabled={true}
           />
 
           <button className="button" type="submit">Enviar</button>

@@ -18,24 +18,38 @@ export default function Logon() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [watcher, setWatcher] = useState(0);
-  const [counter, setCounter] = React.useState(10);
-  const [attempts, setAttempts] = React.useState(1);
+  const [counter, setCounter] = useState(15);
 
+
+  useEffect(() => {
+
+  }, []);
 
   useEffect(() => {
     async function watcherFunction() {
       const { data } = await api.get('/');
       setWatcher(data.code);
+    };
 
-    } watcherFunction();
-  }, []);
+    let reloadPage = setTimeout(() => {
+      if (setWatcher !== 0) {
+        clearTimeout(reloadPage);
+      }
+      if (watcher === 0) {
+        setCounter(counter - 1);
+        watcherFunction();
+      }
+    }, 1000);
 
-  React.useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-  }, [counter]);
+  }, [counter, watcher]);
 
-  if (counter === 0 && watcher === 0) {
-    window.location.reload();
+
+  if (counter === 0) {
+    if (watcher === 0) {
+      window.location.reload();
+    } else {
+      clearTimeout()
+    }
   }
 
   async function handleSubmit(event) {
@@ -81,15 +95,7 @@ export default function Logon() {
       }
       <ToastContainer />
       {
-        watcher === 0 ?
-          <div className="waitConnectionContainer">
-            <h1 className="waitTitle">Não vá embora!</h1>
-            <div className="waitText">Nosso servidor fica indisponivel de tempos em tempos para pouar recursos de memoria, mas vamos reconectar para você!</div>
-            <div className="waitAttemps">Aguarde até <span className="spanAttempts">{attempts}/3</span> tentativas se o login não for apresentado, significa que estamos em manutenção</div>
-            <div className="waitCount">nova tentativa em: {counter}</div>
-          </div>
-          :
-
+        watcher !== 0 ?
           <section className="form">
             <img src={logoText} alt="logo" />
             <form onSubmit={handleSubmit}>
@@ -117,7 +123,12 @@ export default function Logon() {
      </Link>
             </form>
           </section>
-
+          :
+          <div className="waitConnectionContainer">
+            <h1 className="waitTitle">Não vá embora!</h1>
+            <div className="waitText">Estamos fazendo uma verificação rapida na rede</div>
+            <div className="waitCount">Só leva alguns segundos: {counter}... Aguarde!</div>
+          </div>
       }
       <div>
         {/* Em breve Conteudo google play */}

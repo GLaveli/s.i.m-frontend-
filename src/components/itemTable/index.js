@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './styles.css'
 
-export default function Newbudget(props) {
+export default function ItemTable(props) {
 
  let [count, setCount] = useState(0);
  const [cable, setCable] = useState("0");
@@ -35,6 +35,8 @@ export default function Newbudget(props) {
     setSubValor(props.priceAboveThreeWithOutCable * count);
    }
   }
+
+
 
   if (cable === "1") {
    if (count <= 3) {
@@ -71,7 +73,7 @@ export default function Newbudget(props) {
      <div className="coluna">
       <p> Valor:</p>
       <div className="item-values">
-       <input className="input-values" type="text" value={subValor} onChange={() => configureValor()} disabled={true} />
+       <input className="input-values" name="inputValue" type="text" value={subValor} onChange={() => configureValor()} disabled={true} />
       </div>
      </div>
      <div className="coluna">

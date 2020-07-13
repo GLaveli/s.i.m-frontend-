@@ -163,6 +163,10 @@ input[type=number] {
   text-align: center;
 }
 
+.fakeInput{
+  height: 25px;
+}
+
 .horizontal {
   display: flex;
   justify-content: space-between;

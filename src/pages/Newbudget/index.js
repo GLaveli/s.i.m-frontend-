@@ -15,7 +15,8 @@ export default function Newbudget() {
   const [servicesList, setServicesList] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [totalValue, seTotalValue] = useState(0);
+  const [totalValue, setTotalValue] = useState(0);
+  const [selectedItens, setSelectedItens] = useState('');
 
   const history = useHistory();
   var currentTime = new Date()
@@ -36,7 +37,7 @@ export default function Newbudget() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    let data = { title, description }
+    let data = { title, description, totalValue, selectedItens }
 
     const response = await api.post('newbudget', data, {
       headers: {
@@ -61,13 +62,21 @@ export default function Newbudget() {
 
   function handleCuotation() {
     let totalCuotationIputs = 0;
-    var cuotationInputs = document.querySelectorAll('input[name="inputValue"]');
-    
-    for (let i = 0; i < cuotationInputs.length; i++) {
-      totalCuotationIputs += parseInt(cuotationInputs[i].value)
+    let select = "";
+    let liItemTable = document.querySelectorAll('li[name="li-item-table"]');
+    let cuotationInputs = document.querySelectorAll('input[name="inputValue"]');
+    let titleItemTable = document.querySelectorAll('p[name="itemTitle"]');
+    let amountItemTable = document.querySelectorAll('p[name="p-count"]');
 
+    for (let i = 0; i < liItemTable.length; i++) {
+      totalCuotationIputs += parseInt(cuotationInputs[i].value);
+
+      if (amountItemTable[i].textContent > 0) {
+        select += titleItemTable[i].textContent + ' x' + amountItemTable[i].textContent + ', ';
+      }
     }
-    seTotalValue(totalCuotationIputs);
+    setTotalValue(totalCuotationIputs);
+    setSelectedItens(select);
   }
 
   return (
@@ -82,7 +91,7 @@ export default function Newbudget() {
               <ul className="item-panel-body">
                 {
                   servicesList.map((service) => (
-                    <li key={service._id}>
+                    <li key={service._id} name="li-item-table">
                       <ItemTable
                         title={service.description}
                         priceAboveThreeWithCable={service.priceAboveThreeWithCable}
@@ -110,7 +119,7 @@ export default function Newbudget() {
             value={description}
             onChange={event => setDescription(event.target.value)}
           />
-          <input className="centerText"
+          <input className="centerText fakeInput"
             value={`Valor aproximado de R$: ${totalValue},00`} disabled={true}
           />
 

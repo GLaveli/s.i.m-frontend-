@@ -36,8 +36,6 @@ export default function ItemTable(props) {
    }
   }
 
-
-
   if (cable === "1") {
    if (count <= 3) {
     setSubValor(props.priceWithCable * count);
@@ -57,7 +55,7 @@ export default function ItemTable(props) {
   <div className="item-container">
 
    <div className="item-title">
-    <p>{props.title}</p>
+    <p name="itemTitle">{props.title}</p>
    </div>
 
    <div className="item-body">
@@ -81,7 +79,7 @@ export default function ItemTable(props) {
       <div className="counter-block">
        <button className="countButton" onClick={() => { handleDecrement() }}>-</button>
        <div className="numberPane">
-        <p className="numbers"> {count} </p>
+        <p className="numbers" name="p-count"> {count} </p>
        </div>
        <button className="countButton" onClick={() => { handleIncrement() }}>+</button>
       </div>

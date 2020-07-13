@@ -70,7 +70,6 @@ export default function Logon() {
         if (response.data.message) {
           warnToast(response.data.message);
         }
-
         if (response.data.email === email) {
           localStorage.setItem('userId', response.data._id);
           localStorage.setItem('userName', response.data.name);
@@ -78,7 +77,6 @@ export default function Logon() {
           history.push('/budgets');
         }
       } catch (err) {
-
         errorToast("Algo deu errado, tente mais tarde");
       }
     }

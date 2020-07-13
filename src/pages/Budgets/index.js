@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import { ToastContainer } from 'react-toastify';
-
+import HeaderDataFormater from '../../components/headerDataFormater';
+import BudgetSelectedItens from '../../components/budgetSelectedItens';
 import api from '../../services/api';
+import { successToast, warnToast } from '../../components/warnings/MyToast';
 
 import { customToast } from '../../components/warnings/MyToast'
 
@@ -13,11 +15,11 @@ import hommer from '../../assets/hommer.png';
 import './styles.css';
 
 export default function Budgets() {
-  
+
   const [budgets, setBudgets] = useState([]);
   const userName = localStorage.getItem('userName');
   const userId = localStorage.getItem('userId');
-  let fisrtName = userName.split(' ')
+  let fisrtName = userName.split(' ');
   const history = useHistory();
 
   useEffect(() => {
@@ -38,6 +40,20 @@ export default function Budgets() {
     setTimeout(() => {
       customToast("Seus dados de navegação foram apagados ;)");
     }, 1000);
+  }
+
+  async function handleDelete(id) {
+    try {
+      let response = await api.delete(`/deletebudget/${id}`, {
+        headers: {
+          user_id: userId,
+        }
+      });
+      setBudgets(budgets.filter(budget => budget._id !== id));
+      successToast(response.data.message);
+    } catch (err) {
+      warnToast(err);
+    }
   }
 
   //var today = new Date(),
@@ -63,22 +79,33 @@ export default function Budgets() {
         {
           budgets.length === 0 ?
             <div className="emptyBudgetContainer">
-              <h2 className="aliginText">Você ainda não criou um orçamento!</h2>
+              <h2 className="aliginText">Nem um orçamento encontrado!</h2>
               <img className="animatedLogo" src={hommer} alt="Logo animada" />
             </div>
             :
             budgets.map(budget => (
               <li key={budget._id}>
-                <strong>Orçamento em: {budget.createdAt}</strong>
-                <p>Por: {budget.user.name}</p>
-
-                <strong>{budget.title}</strong>
-                <p>{budget.description}</p>
-
-                <strong>Valor:</strong>
-                <p>R$: {budget.price}</p>
-
-                <button>
+                <div className="budget-user">
+                  <strong ><HeaderDataFormater isodate={budget.createdAt} /></strong>
+                  <p>Por: {budget.user.name}</p>
+                </div>
+                <div className="budget-user">
+                  <strong className="budget-title">{budget.title}</strong>
+                </div>
+                <div className="budget-user">
+                  <section>
+                    <p className="budget-description">{budget.description}</p>
+                  </section>
+                </div>
+                <div className="budget-user">
+                  <section>
+                    <BudgetSelectedItens selectedItens={budget.selected_itens} />
+                  </section>
+                </div>
+                <div className="budget-footer">
+                  <strong >Valor: R$: {budget.price}</strong>
+                </div>
+                <button onClick={() => handleDelete(budget._id)} type="button">
                   <FiTrash2 className="FiTrash2" size={20} />
                 </button>
               </li>

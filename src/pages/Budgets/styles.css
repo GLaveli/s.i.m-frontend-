@@ -112,6 +112,7 @@
 .budget-footer {
   display: flex;
 }
+
 .work-container section {
   height: 120px;
   width: 100%;
@@ -120,7 +121,6 @@
   overflow: scroll;
   overflow-x: hidden;
 }
-
 
 /*------------------------------------------------------------*/
 
@@ -132,4 +132,24 @@
     column-gap: 24px;
     list-style: none;
   }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th {
+  text-align: center;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #8c79be;
 }

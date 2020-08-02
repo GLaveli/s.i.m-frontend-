@@ -67,12 +67,24 @@ export default function Newbudget() {
     let cuotationInputs = document.querySelectorAll('input[name="inputValue"]');
     let titleItemTable = document.querySelectorAll('p[name="itemTitle"]');
     let amountItemTable = document.querySelectorAll('p[name="p-count"]');
+    let cableItemTable = document.querySelectorAll('#cableOtions :checked');
+
+
 
     for (let i = 0; i < liItemTable.length; i++) {
+
       totalCuotationIputs += parseInt(cuotationInputs[i].value);
 
+      console.log(cableItemTable[i].value);
+
       if (amountItemTable[i].textContent > 0) {
-        select += titleItemTable[i].textContent + ' x' + amountItemTable[i].textContent + ', ';
+        if (cableItemTable[i].value === '0') {
+          select += amountItemTable[i].textContent + ' x ' + titleItemTable[i].textContent + ', ';
+
+        } else {
+          select += amountItemTable[i].textContent + ' x ' + titleItemTable[i].textContent + ' ' + cableItemTable[i].textContent + ', ';
+
+        }
       }
     }
     setTotalValue(totalCuotationIputs);

@@ -86,11 +86,12 @@ export default function Budgets() {
             budgets.map(budget => (
               <li key={budget._id}>
                 <div className="budget-user">
-                  <strong ><HeaderDataFormater isodate={budget.createdAt} /></strong>
                   <p>Por: {budget.user.name}</p>
                 </div>
                 <div className="budget-user">
-                  <strong className="budget-title">{budget.title}</strong>
+                  {
+                    budget.title ? <strong className="budget-title">{budget.title}</strong> : <strong className="budget-title">Orçamento sem titulo</strong>
+                  }
                 </div>
                 <div className="budget-user">
                   <section>
@@ -99,55 +100,13 @@ export default function Budgets() {
                 </div>
                 <div className="budget-user">
                   <section>
-                    <BudgetSelectedItens selectedItens={budget.selected_itens} />
-                    <table>
-  <tr>
-    <th>Produto</th>
-    <th>qtd</th>
-    <th>cabo</th>
-    <th>Valor</th>
-  </tr>
-  <tr>
-    <td>LÂMPADA FLUORESCENTE/ LED COMUM</td>
-    <td>50</td>
-    <td>sim</td>
-    <td>sim</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-    <td>Italy</td>
-  </tr>
-</table>
+                    <BudgetSelectedItens selectedItens={budget.selected_itens} selectedItensObjct={budget.selectedItensObjct} />
                   </section>
                 </div>
                 <div className="budget-footer">
-                  <strong >Valor: R$: {budget.price}</strong>
+                  {
+                    budget.price ? <strong >Valor aproximado: R$: {budget.price}</strong> : <strong >Itens não foram selecionados</strong>
+                  }
                 </div>
                 <button onClick={() => handleDelete(budget._id)} type="button">
                   <FiTrash2 className="FiTrash2" size={20} />

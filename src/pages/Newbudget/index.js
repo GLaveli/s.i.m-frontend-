@@ -10,6 +10,7 @@ import ItemTable from '../../components/itemTable';
 import './styles.css'
 
 export default function Newbudget() {
+  
   const userId = localStorage.getItem('userId');
 
   const [servicesList, setServicesList] = useState([]);
@@ -17,6 +18,7 @@ export default function Newbudget() {
   const [description, setDescription] = useState('');
   const [totalValue, setTotalValue] = useState(0);
   const [selectedItens, setSelectedItens] = useState('');
+  const [selectedItensObjct, setSelectedItensObjct] = useState({});
 
   const history = useHistory();
   var currentTime = new Date()
@@ -28,16 +30,14 @@ export default function Newbudget() {
   useEffect(() => {
     async function getServices() {
       const response = await api.get('services');
-
       setServicesList(response.data);
-
     } getServices();
   }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    let data = { title, description, totalValue, selectedItens }
+    let dataSave = day + '/' + month + '/' + year;
+    let data = { title, description, totalValue, selectedItens, dataSave, selectedItensObjct }
 
     const response = await api.post('newbudget', data, {
       headers: {
@@ -68,31 +68,36 @@ export default function Newbudget() {
     let titleItemTable = document.querySelectorAll('p[name="itemTitle"]');
     let amountItemTable = document.querySelectorAll('p[name="p-count"]');
     let cableItemTable = document.querySelectorAll('#cableOtions :checked');
-
-
+    let listObject = [];
 
     for (let i = 0; i < liItemTable.length; i++) {
-
+      let itemObject = {};
       totalCuotationIputs += parseInt(cuotationInputs[i].value);
-
-      console.log(cableItemTable[i].value);
 
       if (amountItemTable[i].textContent > 0) {
         if (cableItemTable[i].value === '0') {
-          select += amountItemTable[i].textContent + ' x ' + titleItemTable[i].textContent + ', ';
+          itemObject.amount = amountItemTable[i].textContent;
+          itemObject.title = titleItemTable[i].textContent;
+          itemObject.cable = false;
+          listObject.push(itemObject);
+          select += amountItemTable[i].textContent + ' ' + titleItemTable[i].textContent + ' | ' + ' cabo: Não' + ',  ';
 
         } else {
-          select += amountItemTable[i].textContent + ' x ' + titleItemTable[i].textContent + ' ' + cableItemTable[i].textContent + ', ';
-
+          itemObject.amount = amountItemTable[i].textContent;
+          itemObject.title = titleItemTable[i].textContent;
+          itemObject.cable = true;
+          listObject.push(itemObject);
+          select += amountItemTable[i].textContent + ' ' + titleItemTable[i].textContent + ' | ' + ' cabo: Sim' + ', ';
         }
+
       }
     }
     setTotalValue(totalCuotationIputs);
     setSelectedItens(select);
+    setSelectedItensObjct(listObject);
   }
 
   return (
-
     <div className="new-budget-container">
       <ToastContainer />
       <div className="content">

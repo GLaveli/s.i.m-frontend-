@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 import api from '../../services/api';
 
@@ -10,7 +12,7 @@ import ItemTable from '../../components/itemTable';
 import './styles.css'
 
 export default function Newbudget() {
-  
+
   const userId = localStorage.getItem('userId');
 
   const [servicesList, setServicesList] = useState([]);
@@ -25,7 +27,7 @@ export default function Newbudget() {
   var day = currentTime.getDate();
   var month = currentTime.getMonth() + 1;
   var year = currentTime.getFullYear();
-
+  const MySwal = withReactContent(Swal)
 
   useEffect(() => {
     async function getServices() {
@@ -33,9 +35,48 @@ export default function Newbudget() {
       setServicesList(response.data);
     } getServices();
   }, []);
-
-  async function handleSubmit(e) {
+  function hadleAlert() {
+    alert('Yehh')
+  }
+  function handleSubmit(e) {
     e.preventDefault();
+
+    if (totalValue === 0) {
+      Swal.fire({
+        title: 'Espere!!!',
+        text: `Parece que você esqueceu de atualizar a cotação! para que os valores possam ser registrados você precisa clicar no botão laranja 'atualizar cotação', agora se deseja enviar só o texto, basta clicar em continuar`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#c03',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Esqueci de atualizar a cotação'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            {
+              title: 'Tudo OK!!!',
+              text: "Seu orçamento foi enviado, agora é com a gente, se os seus dados cadastrados estiverem corretos logo entraremos em contato!",
+              icon: 'success',
+            }
+          );
+          getCuotation();
+        }
+      });
+    } else {
+      Swal.fire(
+        {
+          title: 'Tudo OK!!!',
+          text: "Seu orçamento foi enviado, agora é com a gente, se os seus dados cadastrados estiverem corretos logo entraremos em contato!",
+          icon: 'success',
+        }
+      );
+      getCuotation();
+    }
+  }
+
+  async function getCuotation() {
+
     let dataSave = day + '/' + month + '/' + year;
     let data = { title, description, totalValue, selectedItens, dataSave, selectedItensObjct }
 

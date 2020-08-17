@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import { ToastContainer } from 'react-toastify';
-import HeaderDataFormater from '../../components/headerDataFormater';
 import BudgetSelectedItens from '../../components/budgetSelectedItens';
 import api from '../../services/api';
 import { successToast, warnToast } from '../../components/warnings/MyToast';
@@ -17,6 +16,7 @@ import './styles.css';
 export default function Budgets() {
 
   const [budgets, setBudgets] = useState([]);
+  const userFlag = localStorage.getItem('userFlag');
   const userName = localStorage.getItem('userName');
   const userId = localStorage.getItem('userId');
   let fisrtName = userName.split(' ');
@@ -33,9 +33,10 @@ export default function Budgets() {
   }, [userId]);
 
   function handleExit() {
-    localStorage.setItem('userId', '');
-    localStorage.setItem('userName', '');
-    localStorage.setItem('userEmail', '');
+    localStorage.setItem('userId', null);
+    localStorage.setItem('userName', null);
+    localStorage.setItem('userEmail', null);
+    localStorage.setItem('userFlag', null);
     history.push('/');
     setTimeout(() => {
       customToast("Seus dados de navegação foram apagados ;)");
@@ -56,20 +57,31 @@ export default function Budgets() {
     }
   }
 
-  //var today = new Date(),
-  //date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
-
   return (
     <div className="work-container">
       <ToastContainer />
       <header>
+
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
-        <span>Bem vindo, {fisrtName[0]}</span>
-        <Link className="button" to="/newbudget">Novo orçamento</Link>
 
         <button type="button" onClick={handleExit}>
           <FiPower className="FiPower" size={18} />
         </button>
+
+        <span>Bem vindo, {fisrtName[0]}</span>
+
+        <div className="buttonContainer">
+
+          {
+            Number(userFlag) === 0 ?
+              <></>
+              :
+              <Link className="buttonBudget" to="/dash">dashboard</Link>
+          }
+          <Link className="buttonBudget" to="/newbudget">Novo orçamento</Link>
+        </div>
+
+
       </header>
 
       <h1 className="centerItem">Meus orçamentos: {budgets.length} ao total</h1>
@@ -79,13 +91,14 @@ export default function Budgets() {
         {
           budgets.length === 0 ?
             <div className="emptyBudgetContainer">
-              <h2 className="aliginText">Nem um orçamento encontrado!</h2>
-              <img className="animatedLogo" src={hommer} alt="Logo animada" />
+              <h2>Nem um orçamento encontrado!</h2>
+              <img className="homer" src={hommer} alt="Logo animada" />
             </div>
             :
             budgets.map(budget => (
               <li key={budget._id}>
                 <div className="budget-user">
+                  <p>{budget.dataSave}</p>
                   <p>Por: {budget.user.name}</p>
                 </div>
                 <div className="budget-user">

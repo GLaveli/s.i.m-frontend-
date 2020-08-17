@@ -20,11 +20,6 @@ export default function Logon() {
   const [watcher, setWatcher] = useState(0);
   const [counter, setCounter] = useState(15);
 
-
-  useEffect(() => {
-
-  }, []);
-
   useEffect(() => {
     async function watcherFunction() {
       const { data } = await api.get('/');
@@ -74,6 +69,7 @@ export default function Logon() {
           localStorage.setItem('userId', response.data._id);
           localStorage.setItem('userName', response.data.name);
           localStorage.setItem('userEmail', response.data.email);
+          localStorage.setItem('userFlag', response.data.flag);
           history.push('/budgets');
         }
       } catch (err) {
@@ -86,6 +82,7 @@ export default function Logon() {
     <div className="logon-container">
 
       {
+        //Observa se a API esta online
         watcher !== 0 ?
           <img className="watcherImg" src={imgWatcherOn} alt="WatcherOff" />
           :
@@ -117,8 +114,8 @@ export default function Logon() {
 
               <Link className="linkGoAndBack" to="/register" >
                 <FiLogIn size={16} color="#43415D" />
-     Não tenho credenciais
-     </Link>
+                  Não tenho credenciais
+              </Link>
             </form>
           </section>
           :

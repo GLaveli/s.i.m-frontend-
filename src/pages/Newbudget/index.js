@@ -3,7 +3,6 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import api from '../../services/api';
 
@@ -27,7 +26,6 @@ export default function Newbudget() {
   var day = currentTime.getDate();
   var month = currentTime.getMonth() + 1;
   var year = currentTime.getFullYear();
-  const MySwal = withReactContent(Swal)
 
   useEffect(() => {
     async function getServices() {
@@ -35,9 +33,6 @@ export default function Newbudget() {
       setServicesList(response.data);
     } getServices();
   }, []);
-  function hadleAlert() {
-    alert('Yehh')
-  }
   function handleSubmit(e) {
     e.preventDefault();
 

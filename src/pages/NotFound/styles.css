@@ -1,0 +1,52 @@
+.container404 {
+  width: 100%;
+  height: 100%;
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.content{
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container404 h1 {
+  font-size: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container404 .img404{
+  padding-bottom: 15px;
+}
+.container404 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container404 p {
+  font-size: 18px;
+  padding-bottom: 25px
+}
+.container404 .button404 {
+  width: 255px;
+  height: 40px;
+  background: #43415D;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 40px;
+  transition: 0.2s;
+}
+
+.container404 .button404:hover {
+  color: #F9A229;
+  background: #4d4b69;
+}

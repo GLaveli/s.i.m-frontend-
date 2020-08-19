@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import api from '../../services/api';
 
 import { customToast } from '../../components/warnings/MyToast';
-import Chart from './charts'
+import Chart from './charts';
 import logoText from '../../assets/logoText.png';
 
 
@@ -15,13 +15,21 @@ import './styles.css';
 export default function Dashboard() {
 
   const [getbasic, setBasic] = useState([0, 0])
+  const userEmail = localStorage.getItem('userEmail');
   const userName = localStorage.getItem('userName');
   const userId = localStorage.getItem('userId');
+
   let fisrtName = userName.split(' ');
   const history = useHistory();
 
   useEffect(() => {
-    api.get('getbasic').then(response => {
+    api.get('getbasic', {
+      headers: {
+        user_id: userId,
+        email: userEmail,
+      }
+    }).then(response => {
+      console.log(response);
       setBasic(response.data);
     });
   }, []);
@@ -63,13 +71,13 @@ export default function Dashboard() {
 
         <div className="card">
           <div className="cardheader">
-            <h3>Title 1</h3>
+            <h3>Registros</h3>
           </div>
           <div className="cardBody">
             <p>Registrados: {getbasic.countUser}</p>
             <p>Orçamentos: {getbasic.countBudget}</p>
-            <p>Tabela: {getbasic.countService}</p>
-            <p>Reporvado: Result</p>
+            <p>Produtos: {getbasic.countService}</p>
+            <p>Reprovados: 0</p>
           </div>
         </div>
 

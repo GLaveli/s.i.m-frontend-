@@ -41,7 +41,7 @@ let charData = {
 export default function Chart() {
  return (
   <>
-   <Pie
+   <Bar
     data={charData}
     width={700}
     height={300}

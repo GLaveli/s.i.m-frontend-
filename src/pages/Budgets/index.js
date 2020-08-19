@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import BudgetSelectedItens from '../../components/budgetSelectedItens';
 import api from '../../services/api';
 import { successToast, warnToast } from '../../components/warnings/MyToast';
+import Swal from 'sweetalert2'
 
 import { customToast } from '../../components/warnings/MyToast'
 
@@ -16,9 +17,12 @@ import './styles.css';
 export default function Budgets() {
 
   const [budgets, setBudgets] = useState([]);
-  const userFlag = localStorage.getItem('userFlag');
-  const userName = localStorage.getItem('userName');
+  const [userFlag, setuserFlag] = useState(0);
+
   const userId = localStorage.getItem('userId');
+  const userName = localStorage.getItem('userName');
+  const userEmail = localStorage.getItem('userEmail');
+
   let fisrtName = userName.split(' ');
   const history = useHistory();
 
@@ -26,9 +30,17 @@ export default function Budgets() {
     api.get('/showbudgets', {
       headers: {
         user_id: userId,
+        email: userEmail,
       }
     }).then(response => {
-      setBudgets(response.data);
+      setBudgets(response.data.budgets);
+
+      if (response.data.userFlag != undefined || response.data.userFlag != null || response.data.userFlag != 0) {
+        setuserFlag(response.data.userFlag);
+      }
+
+    }).catch(err => {
+      console.log(err);
     });
   }, [userId]);
 
@@ -39,11 +51,36 @@ export default function Budgets() {
     localStorage.setItem('userFlag', null);
     history.push('/');
     setTimeout(() => {
-      customToast("Seus dados de navegação foram apagados ;)");
+      customToast("Seus dados de navegação foram apagados");
     }, 1000);
   }
 
-  async function handleDelete(id) {
+  function handleDelete(id) {
+
+    Swal.fire({
+      title: 'Remover orçamento ?',
+      text: `Você tem certeza de que quer remover este orçamento ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#c03',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, remover agora',
+      cancelButtonText: 'Não, manter cotação',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          {
+            title: 'Tudo OK!',
+            text: "Seu orçamento foi removido!",
+            icon: 'success',
+          }
+        );
+        deleteCard(id);
+      }
+    });
+  }
+
+  async function deleteCard(id) {
     try {
       let response = await api.delete(`/deletebudget/${id}`, {
         headers: {
@@ -61,7 +98,6 @@ export default function Budgets() {
     <div className="work-container">
       <ToastContainer />
       <header>
-
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
 
         <button type="button" onClick={handleExit}>
@@ -71,7 +107,6 @@ export default function Budgets() {
         <span>Bem vindo, {fisrtName[0]}</span>
 
         <div className="buttonContainer">
-
           {
             Number(userFlag) === 0 ?
               <></>
@@ -80,13 +115,10 @@ export default function Budgets() {
           }
           <Link className="buttonBudget" to="/newbudget">Novo orçamento</Link>
         </div>
-
-
       </header>
 
       <h1 className="centerItem">Meus orçamentos: {budgets.length} ao total</h1>
       <hr className="margin-botton" />
-
       <ul>
         {
           budgets.length === 0 ?

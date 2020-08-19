@@ -13,6 +13,7 @@ import imgWatcherOn from '../../assets/watcher/onLineStatus.png';
 import './styles.css';
 
 export default function Logon() {
+
   const history = useHistory();
 
   const [email, setEmail] = useState('');
@@ -80,7 +81,6 @@ export default function Logon() {
   }
   return (
     <div className="logon-container">
-
       {
         //Observa se a API esta online
         watcher !== 0 ?

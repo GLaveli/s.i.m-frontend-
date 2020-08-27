@@ -48,19 +48,22 @@ export default function Dashboard() {
   return (
     <div className="work-container">
       <ToastContainer />
+
       <header>
         <img className="animatedLogo" src={logoText} alt="Logo animada" />
+
+        <button type="button" onClick={handleExit}>
+          <FiPower className="FiPower" size={18} />
+        </button>
+
         <span>Bem vindo, {fisrtName[0]}</span>
 
         <div className="buttonContainer">
           <Link className="buttonBudget" to="/budgets">Ver Orçamentos</Link>
-          <Link className="buttonBudget" to="/newbudget">Editar tabela</Link>
+          <Link className="buttonBudget" to="/table">Editar tabela</Link>
         </div>
 
-        <button type="button" onClick={handleExit}>
-          <FiPower className="FiPower" size={18} />
 
-        </button>
       </header>
 
 
@@ -70,38 +73,15 @@ export default function Dashboard() {
       <div className="cardContainer">
 
         <div className="card">
-          <div className="cardheader">
+          <div className="cardHeader">
             <h3>Registros</h3>
           </div>
           <div className="cardBody">
-            <p>Registrados: {getbasic.countUser}</p>
-            <p>Orçamentos: {getbasic.countBudget}</p>
-            <p>Produtos: {getbasic.countService}</p>
-            <p>Reprovados: 0</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="cardheader">
-            <h3>Title 3</h3>
-          </div>
-          <div className="cardBody">
-            <p>Registrados:</p>
-            <p>Orçamentos:</p>
-            <p>Aprovados:</p>
-            <p>Reporvado:</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="cardheader">
-            <h3>Title 4</h3>
-          </div>
-          <div className="cardBody">
-            <p>Registrados:</p>
-            <p>Orçamentos:</p>
-            <p>Aprovados:</p>
-            <p>Reporvado:</p>
+            <p className="dashTextInfo">Clientes: {getbasic.countUser}</p>
+            <p className="dashTextInfo">Orçamentos: {getbasic.countBudget}</p>
+            <p className="dashTextInfo">Produtos: {getbasic.countService}</p>
+            <p className="dashTextInfo" >Aprovados: 0</p>
+            <p className="dashTextInfo" >Reprovados: 0</p>
           </div>
         </div>
 

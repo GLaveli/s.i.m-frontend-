@@ -1,0 +1,113 @@
+.new-table-container {
+  width: 100%;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-table-container .content {
+  width: 100%;
+  padding: 96px;
+  background: #f0f0f5;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-table-container .content form .linha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
+}
+.new-table-container .content form .coluna {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.new-table-container .content section {
+  width: 100%;
+  max-width: 500px;
+  transition: 0.5s;
+}
+
+.new-table-container .content section .item-panel {
+  height: 400px;
+  width: 500px;
+  background-color: #fefefe;
+  border: 1px solid #e1e1ec;
+  overflow: auto;
+}
+
+.new-table-container .content section .item-panel .item-panel-body {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1%;
+}
+
+.new-table-container .content section .item-panel .item-panel-title {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.new-table-container .content .logo-register-newbudget {
+  position: relative;
+  height: 40px;
+  margin-left: 25%;
+  transform: translate(50%, 50%);
+  bottom: 0px;
+}
+
+.new-table-container .content form {
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+  transition: 0.5s;
+}
+
+.new-table-container .content form input {
+  margin: 3px;
+}
+
+.new-table-container .content form textarea {
+  margin-left: 3px;
+  margin-top: 3px;
+}
+
+.new-table-container .content form .link-position {
+  margin-top: 8px;
+  margin-bottom: -25px;
+}
+
+/*--------------------------------------------*/
+
+@media (max-width: 1100px) {
+  .new-table-container {
+    width: 100%;
+    max-width: 850px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .new-table-container .content {
+    display: inline;
+    justify-content: center;
+    margin: 0px 10px;
+    padding: 0;
+  }
+  .new-table-container .content section {
+    margin: 15px auto;
+    transition: 0.5s;
+  }
+  .new-table-container .content form {
+    margin: 0 auto 55px;
+  }
+}

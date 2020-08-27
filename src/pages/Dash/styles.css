@@ -10,14 +10,12 @@
 }
 
 .cardContainer .card {
- height: 150px;
- width: 270px;
  margin: 5px;
  border-radius: 15px;
  background-color: #fff;
 }
 
-.cardContainer .cardheader {
+.cardContainer .cardHeader {
  width: 100%;
  text-align: center;
  font-size: 16px;
@@ -25,11 +23,30 @@
  border-radius: 5px;
  color: #fff;
  padding: 5px;
- background-color: #43415D;
+ background-color: #43415d;
 }
 
 .cardContainer .cardBody {
+ min-height: 10px;
+ min-width: 250px;
+ max-width: 800px;
  display: flex;
- flex-direction: column;
+ flex-direction: row;
+ justify-content: space-around;
+ flex-wrap: wrap;
  margin: 15px;
+}
+
+.dashTextInfo {
+ font-size: 18px;
+ color: #2c2c2c;
+ font-weight: 800;
+ padding: 5px;
+}
+
+.dashTextInfo::after {
+ content: "|";
+}
+.dashTextInfo::before {
+ content: "|";
 }

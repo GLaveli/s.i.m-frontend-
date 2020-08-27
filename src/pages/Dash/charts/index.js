@@ -17,9 +17,8 @@ let charData = {
   'Dezembro'],
 
  datasets: [{
-  label: 'Cadastros / mês',
-  data: [0, 15, 22, 18, 1, 50, 0, 13, 10, 10, 1, 5],
-
+  label: 'Orçamentos / mês',
+  data: [50, 15, 22, 18, 1, 50, 50, 1, 18, 22, 15, 50],
   backgroundColor: [
    'rgb(255,99,132,0.6)',
    'rgb(54,162,235,0.6)',
@@ -41,7 +40,7 @@ let charData = {
 export default function Chart() {
  return (
   <>
-   <Bar
+   <Line
     data={charData}
     width={700}
     height={300}
